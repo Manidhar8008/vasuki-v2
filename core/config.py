@@ -1,7 +1,4 @@
-# vasuki_v2/core/config.py
+import os
 
-DB_PATH = "data/vasuki.db"
-
-# future extensions (do not change now)
-EVENT_LIMIT = 500
-DEBUG_MODE = True
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.path.join(BASE_DIR, "data", "vasuki.db")

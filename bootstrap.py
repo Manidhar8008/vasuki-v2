@@ -2,7 +2,6 @@ from api.ask import AskAPI
 
 def main():
     api = AskAPI()
-
     print("VASUKI v2 ACTIVE")
 
     while True:
@@ -11,7 +10,6 @@ def main():
             break
 
         print(api.ask(q))
-
 
 if __name__ == "__main__":
     main()
