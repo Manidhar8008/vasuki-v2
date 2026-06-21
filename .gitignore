@@ -1,6 +1,28 @@
+# Python cache
 __pycache__/
-*.pyc
-*.db
-data/*.db
+*.py[cod]
+*.so
+
+# Virtual environments
 venv/
-*.log
+.venv/
+
+# Local runtime state
+data/*.db
+data/*.db-wal
+data/*.db-shm
+logs/
+exports/
+
+# Secrets
+.env
+*.pem
+*.key
+credentials*
+*_token*
+*_secret*
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store

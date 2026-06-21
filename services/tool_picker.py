@@ -17,4 +17,7 @@ def pick_tools(query: str) -> list[str]:
     if any(word in q for word in ["search", "find", "file", "document"]):
         tools.append("local_search")
 
+    if any(word in q for word in ["github", "git", "commit", "branch", "repository", "repo"]):
+        tools.append("github_status")
+
     return tools or ["general_reasoning"]

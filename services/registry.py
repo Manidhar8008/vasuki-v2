@@ -3,6 +3,7 @@ from services.planner_service import create_plan
 from services.mentor_service import mentor_response
 from services.status_service import get_status
 from services.local_search_service import search_local_files
+from services.github_service import github_status
 
 TOOLS = {
     "memory_search": search_memory,
@@ -10,6 +11,7 @@ TOOLS = {
     "mentor": mentor_response,
     "system_status": lambda query=None: get_status(),
     "local_search": search_local_files,
+    "github_status": github_status,
 }
 
 def get_tool(name: str):
