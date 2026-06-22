@@ -1,15 +1,30 @@
-from api.ask import AskAPI
+from api.ask import ask
+from services.response_composer import compose_response
+
 
 def main():
-    api = AskAPI()
     print("VASUKI v2 ACTIVE")
+    print("Type a request. Type 'exit' or 'quit' to close.")
 
     while True:
-        q = input("VASUKI> ")
-        if q in ["exit", "quit"]:
+        try:
+            query = input("VASUKI> ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nVASUKI stopped.")
             break
 
-        print(api.ask(q))
+        if not query:
+            continue
+
+        if query.lower() in {"exit", "quit"}:
+            print("VASUKI stopped.")
+            break
+
+        result = ask(query)
+        print()
+        print(compose_response(result))
+        print()
+
 
 if __name__ == "__main__":
     main()
