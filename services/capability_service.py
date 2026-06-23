@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-CAPABILITIES_FILE = Path("config/capabilities.json")
+CAPABILITIES_FILE = Path(__file__).resolve().parent.parent / "config" / "capabilities.json"
 
 
 def list_capabilities() -> dict:
@@ -14,29 +14,23 @@ def list_capabilities() -> dict:
 
 
 def get_capability(capability_id: str) -> dict | None:
-    for capability in list_capabilities()["capabilities"]:
-        if capability["id"] == capability_id:
-            return capability
+    for item in list_capabilities()["capabilities"]:
+        if item["id"] == capability_id:
+            return item
     return None
 
 
 def can_run(capability_id: str, confirmed: bool = False) -> dict:
     capability = get_capability(capability_id)
 
-    if not capability:
+    if capability is None:
+        return {"allowed": False, "reason": "Capability is not registered."}
+
+    if capability.get("requires_confirmation", False) and not confirmed:
         return {
             "allowed": False,
-            "reason": "Capability is not registered."
+            "reason": "Explicit confirmation is required before this capability can run.",
+            "capability": capability,
         }
 
-    if capability.get("requires_confirmation") and not confirmed:
-        return {
-            "allowed": False,
-            "reason": "This capability requires explicit confirmation.",
-            "capability": capability
-        }
-
-    return {
-        "allowed": True,
-        "capability": capability
-    }
+    return {"allowed": True, "capability": capability}

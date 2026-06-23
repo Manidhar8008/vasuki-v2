@@ -4,7 +4,6 @@
     {
       "id": "personal_memory",
       "name": "Personal Memory Search",
-      "description": "Search approved local memory imports.",
       "mode": "read",
       "risk": "low",
       "requires_confirmation": false
@@ -12,7 +11,6 @@
     {
       "id": "github_status",
       "name": "GitHub Repository Status",
-      "description": "Read branch, remote, latest commit, and working-tree state.",
       "mode": "read",
       "risk": "low",
       "requires_confirmation": false
@@ -20,24 +18,14 @@
     {
       "id": "local_file_search",
       "name": "Approved Local File Search",
-      "description": "Search filenames and text only in approved project folders.",
       "mode": "read",
       "risk": "medium",
       "requires_confirmation": true
     },
     {
       "id": "web_research",
-      "name": "Web Research",
-      "description": "Search public web sources and return citations.",
+      "name": "Public Web Research",
       "mode": "network_read",
-      "risk": "medium",
-      "requires_confirmation": true
-    },
-    {
-      "id": "task_draft",
-      "name": "Task Drafting",
-      "description": "Create a local draft task. Does not send or publish anything.",
-      "mode": "write_draft",
       "risk": "medium",
       "requires_confirmation": true
     }
