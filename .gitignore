@@ -26,3 +26,5 @@ credentials*
 .vscode/
 .idea/
 .DS_Store
+
+data/private_imports/

@@ -52,6 +52,15 @@ def compose_response(route_result: dict) -> str:
                 lines.append(f"- {step}")
             lines.append(result.get("next_question", ""))
 
+        elif tool == "general_reasoning":
+            lines.append("Reasoning result")
+            lines.append(result.get("answer", "No answer produced."))
+            matches = result.get("memory_matches", [])
+            if matches:
+                lines.append("Matching local memory:")
+                for item in matches:
+                    lines.append(f"- {item.get('value', '')}")
+
         else:
             lines.append(f"[{tool}] Result received.")
 
